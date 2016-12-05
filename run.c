@@ -19,6 +19,7 @@ int main (int argc, char *argv[]) {
 	char *argv_opt[] = {"ramsmp", "-b", "3", "-p", "1", NULL};
 
 	unsigned long mask;
+	cpu_set_t my_set;
 	
 	opt = atoi ( argv[1] );
 
@@ -34,11 +35,13 @@ int main (int argc, char *argv[]) {
 	} // if-end
 	// opt3
 	if ( opt == 2 ) {
+		CPU_ZERO(&my_set);
+		CPU_SET(1, &my_set);
 	
 		// big core
-		mask = 32;
+		//mask = 32;
 		//pid = _execv(path, argv_opt);	// run ramsmp & return ramsmp PID
-		sched_setaffinity ( _execv(path, argv_opt), sizeof(cpu_set_t), &mask );
+		sched_setaffinity ( _execv(path, argv_opt), sizeof(cpu_set_t), &my_set );
 
 		// LITTLE core
 		//sched_setaffinity ( 0, sizeof(cpu_set_t), (cpu_set_t*)&mask );
@@ -51,7 +54,6 @@ int main (int argc, char *argv[]) {
 pid_t _execv(const char *path, char *const argv[]) {
 	int ret;
 	pid_t pid;
-	unsigned long mask;
 
 	pid = fork();
 	if (pid == -1) {
@@ -59,9 +61,7 @@ pid_t _execv(const char *path, char *const argv[]) {
 		exit(EXIT_FAILURE);
 	}
 	if (pid == 0) {
-		mask = 32;
 		ret = execv(path, argv);
-		sched_setaffinity ( 0, sizeof(cpu_set_t), &mask );
 		if (ret == -1) {
 			perror ("execv");
 			exit(EXIT_FAILURE);
