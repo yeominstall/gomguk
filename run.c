@@ -4,10 +4,11 @@
 #include <stdio.h>
 #include <omp.h>
 #include <sched.h>
+#include <string.h>
 
 #define T_MAX 16
 
-pid_t _execv(const char *path, char *const argv[]);
+pid_t _execv(const char *path, char *const argv[], unsigned long mask);
 
 int main (int argc, char *argv[]) {
 
@@ -17,6 +18,7 @@ int main (int argc, char *argv[]) {
 	pid_t pid;
 	char path[] = "ramsmp-3.5.0-custom/ramsmp";
 	char *argv_opt[] = {"ramsmp", "-b", "3", "-p", "1", NULL};
+	char tset[256];
 
 	unsigned long mask;
 	cpu_set_t my_set;
@@ -25,7 +27,7 @@ int main (int argc, char *argv[]) {
 
 	// opt2 : symmetric distribuition
 	if ( opt == 1 ) {
-		omp_set_num_threads(8);
+		omp_set_num_threads(16);
 #pragma omp parallel
 	{
 #pragma omp for
@@ -35,25 +37,27 @@ int main (int argc, char *argv[]) {
 	} // if-end
 	// opt3
 	if ( opt == 2 ) {
-		CPU_ZERO(&my_set);
-		CPU_SET(1, &my_set);
+#pragma omp parallel
+	{
+#pragma omp for
+		for (i = 0; i < T_MAX * 2; i++) {
+			// big core
+			mask = 5;
+			pid = _execv(path, argv_opt, mask);	// run ramsmp & return ramsmp PID
 	
-		// big core
-		//mask = 32;
-		//pid = _execv(path, argv_opt);	// run ramsmp & return ramsmp PID
-		sched_setaffinity ( _execv(path, argv_opt), sizeof(cpu_set_t), &my_set );
-
-		// LITTLE core
-		//sched_setaffinity ( 0, sizeof(cpu_set_t), (cpu_set_t*)&mask );
+			// LITTLE core
+			//sched_setaffinity ( 0, sizeof(cpu_set_t), (cpu_set_t*)&mask );
 
 	}
 
 	return 0;
 }
 
-pid_t _execv(const char *path, char *const argv[]) {
+pid_t _execv(const char *path, char *const argv[], unsigned long mask) {
 	int ret;
-	pid_t pid;
+	pid_t pid, cpid;
+	char tset[256];
+	unsigned long mask;
 
 	pid = fork();
 	if (pid == -1) {
@@ -61,6 +65,9 @@ pid_t _execv(const char *path, char *const argv[]) {
 		exit(EXIT_FAILURE);
 	}
 	if (pid == 0) {
+		cpid = getpid();
+		sprintf(tset, "taskset -pc %ld %d", mask, cpid);
+		system ( tset );
 		ret = execv(path, argv);
 		if (ret == -1) {
 			perror ("execv");

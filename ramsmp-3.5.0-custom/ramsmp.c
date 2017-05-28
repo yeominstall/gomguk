@@ -352,9 +352,7 @@ int main(int argc, char *argv[]) {
 	case(128): fproc = 7; break;
 	case(256): fproc = 8; break;
     }
-    for(cnt = 0; cnt < fproc; cnt++) fork();
-    
-    printf ("current cpu id : %d\n", sched_getcpu());
+    for(cnt = 0; cnt < fproc; cnt++) fork(); 
 
     /* every process initialises itself and attaches the SHM segment to its
      * virtual memory space */
@@ -440,6 +438,7 @@ int main(int argc, char *argv[]) {
 		passnum = (passize << 20)/blksize;
 		time = intrd(blksize, passnum);
 		if(mypid == masterpid) {
+			printf ("current cpu id : %d, pid : %d\n", sched_getcpu(), mypid);
 		    counter = 0;
 		    while(counter != (nproc-1)) {
 			counter = 0;
@@ -454,6 +453,7 @@ int main(int argc, char *argv[]) {
 		      blksize, (F64)((passize << 10)*nproc)*mb/avgtime, bch);
 		    for(cnt = 1; cnt < nproc; cnt++) shm[cnt+256] = 0;
 		} else {
+			printf ("current cpu id : %d, pid : %d\n", sched_getcpu(), mypid);
 		    shm[myptr+512] = time;
 		    shm[myptr+256] = 1;
 		    while(shm[myptr+256]) usleep(100);

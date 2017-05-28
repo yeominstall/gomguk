@@ -1,0 +1,25 @@
+RAMspeed/SMP (GENERIC) v3.5.0 by Rhett M. Hollander and Paul V. Bolotoff, 2002-09
+
+8Gb per pass mode, 8 processes
+
+INTEGER & WRITING         1 Kb block: 47857.92 MB/s
+INTEGER & WRITING         2 Kb block: 46474.09 MB/s
+INTEGER & WRITING         4 Kb block: 44517.08 MB/s
+INTEGER & WRITING         8 Kb block: 43897.36 MB/s
+INTEGER & WRITING        16 Kb block: 43672.94 MB/s
+INTEGER & WRITING        32 Kb block: 44370.91 MB/s
+INTEGER & WRITING        64 Kb block: 40466.52 MB/s
+INTEGER & WRITING       128 Kb block: 38986.70 MB/s
+INTEGER & WRITING       256 Kb block: 37507.81 MB/s
+INTEGER & WRITING       512 Kb block: 24249.43 MB/s
+INTEGER & WRITING      1024 Kb block: 7200.09 MB/s
+INTEGER & WRITING      2048 Kb block: 4582.66 MB/s
+INTEGER & WRITING      4096 Kb block: 4478.11 MB/s
+INTEGER & WRITING      8192 Kb block: 4476.55 MB/s
+INTEGER & WRITING     16384 Kb block: 4471.70 MB/s
+INTEGER & WRITING     32768 Kb block: 4452.23 MB/s
+
+real    1m57.598s
+user    1m48.090s
+sys     0m0.910s
+
