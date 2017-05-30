@@ -1,0 +1,4 @@
+se.nr_migrations                   :                    2
+current_cpu                        :                    0
+se.nr_migrations                   :                    3
+current_cpu                        :                    6

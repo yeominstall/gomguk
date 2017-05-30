@@ -1,3 +1,7 @@
+/**
+ * ramsmp runner with openmp
+ */
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>

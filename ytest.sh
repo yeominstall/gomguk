@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # 4 cpubomb
-./ramsmp-3.5.0-custom/ramsmp -b 1 -p 8 &
+./cpubomb/cpubomb 5 &
 
 # trace cpubomb
-./ytracer `pgrep ramsmp`
+./ytracer `pgrep cpubomb`
 
 # 1 lightload with sleep
 

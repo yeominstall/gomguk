@@ -15,8 +15,8 @@ struct core_used {
 	struct core_used *next;
 };
 
-int ytracer (pid_t pid) {
-	pid_t ppid;
+int main (int argc, char* argv[]) {
+	pid_t pid_p;
 	int fp, status;
 	char path[50], comm[50];
 	mode_t mode = 0644;
@@ -24,11 +24,10 @@ int ytracer (pid_t pid) {
 	size_t rsize = 0;
 	char buf[MAX_BUFFER_LEN];
 
-	sprintf(path, "%s%d%s", "/proc/", pid, "/sched");
-	sprintf(comm, "grep -E 'current_cpu|se.nr_migrations' %s >> ./res_ytrace/%d.txt", path, pid);
+	pid_p = atoi(argv[1]);
+	sprintf(path, "%s%d%s", "/proc/", pid_p, "/sched");
+	sprintf(comm, "grep -E 'current_cpu|se.nr_migrations' %s >> ./res_ytrace/%d.txt", path, pid_p);
 
-	ppid = fork();
-	if (ppid == 0) {
 		fp = open (path, O_RDWR | O_APPEND | O_CREAT, mode);
 		if (fp < 0) perror("FILE OPEN");
 
@@ -37,8 +36,6 @@ int ytracer (pid_t pid) {
 			sleep(3);
 		}
 		close(fp);
-	}
-	ppid = wait(&status);
 
 	//        while ((rsize = read(fp, buf, MAX_BUFFER_LEN)) > 0) {
 	//                printf("%s\n", buf);
