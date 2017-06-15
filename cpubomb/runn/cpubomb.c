@@ -1,5 +1,6 @@
 #include "stdio.h"
 #include <stdlib.h> 
+#include <unistd.h>
 
 #define TOTALFORK 4
 
@@ -15,6 +16,7 @@ m=i*i*i*i*i*i*i;// m=k*l*jj*l;
 m = m^l;k = (k/m * jj) % i;l=j*m*k;i = (j * k)^m ;
 l = (k/m * jj) % i;m = m^l;m = m^l;i = (j * k)^m ;
 k = (k/m * jj) % i; m=k*k*k*k*k - m/i; 
+usleep(1000);
 }}
 
 int main(int argc, char* argv[]){
