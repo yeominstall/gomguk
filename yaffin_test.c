@@ -63,7 +63,9 @@ int main(int argc, char* argv[]) {
 		sprintf(arg, "%d", getpid());
 		// cpubomb
 		//execl("ramsmp-3.5.0-custom/ramsmp", "ramsmp", "-b1", pnum_inst,  (char*)0);
-		execl("cpubomb/runn/cpubomb", "cpubomb", "1", (char*)0);
+		execl("cpubomb/runn/cpubomb80", "cpubomb80", "1", (char*)0);
+		//execl("/usr/bin/sysbench", "sysbench", "--test=cpu", "--num-threads=1", "--cpu-max-prime=20000", "run", (char*)0);
+		//execl("NPB3.3.1/NPB3.3-OMP/run.sh", "run.sh", (char*)0);
 	} else if (pid > 0) {
 		pid = wait(&status);
 	}
