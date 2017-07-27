@@ -16,7 +16,7 @@ m=i*i*i*i*i*i*i;// m=k*l*jj*l;
 m = m^l;k = (k/m * jj) % i;l=j*m*k;i = (j * k)^m ;
 l = (k/m * jj) % i;m = m^l;m = m^l;i = (j * k)^m ;
 k = (k/m * jj) % i; m=k*k*k*k*k - m/i; 
-if(a % 5000 == 0) usleep(10);
+if(a % 5000 == 0) usleep(400);
 }}
 
 int main(int argc, char* argv[]){
