@@ -1,0 +1,5 @@
+./ef_runner.sh: line 6:  2954 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	0m42.833s
+user	0m0.060s
+sys	0m0.180s
