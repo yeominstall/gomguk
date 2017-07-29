@@ -1,0 +1,72 @@
+13
+./ef_runner.sh: line 6:  1723 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	1m40.919s
+user	0m0.060s
+sys	0m0.265s
+12
+./ef_runner.sh: line 6:  1752 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	1m43.643s
+user	0m0.095s
+sys	0m0.245s
+11
+./ef_runner.sh: line 6:  1768 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	1m46.777s
+user	0m0.075s
+sys	0m0.295s
+10
+./ef_runner.sh: line 6:  1806 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	1m50.539s
+user	0m0.085s
+sys	0m0.325s
+9
+./ef_runner.sh: line 6:  1843 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	1m55.155s
+user	0m0.090s
+sys	0m0.385s
+8
+./ef_runner.sh: line 6:  1859 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	2m0.855s
+user	0m0.140s
+sys	0m0.415s
+7
+./ef_runner.sh: line 6:  1886 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	2m8.273s
+user	0m0.165s
+sys	0m0.485s
+6
+./ef_runner.sh: line 6:  1970 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	2m18.161s
+user	0m0.155s
+sys	0m0.640s
+5
+./ef_runner.sh: line 6:  2033 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	2m32.054s
+user	0m0.215s
+sys	0m0.790s
+4
+./ef_runner.sh: line 6:  2060 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	2m52.897s
+user	0m0.240s
+sys	0m1.130s
+3
+./ef_runner.sh: line 6:  2087 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	3m27.845s
+user	0m0.380s
+sys	0m1.740s
+2
+./ef_runner.sh: line 6:  2114 Terminated              ../odroid-smartpower-linux/smartpower energy/smartresult.txt
+
+real	4m38.660s
+user	0m0.780s
+sys	0m3.335s
