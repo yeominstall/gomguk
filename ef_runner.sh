@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sleep 5
-echo "ramsmp -b1 -p1"
+echo "start"
 
 { time ../odroid-smartpower-linux/smartpower energy/smartresult.txt & } 2> ./energy/time.txt
 
@@ -14,4 +14,4 @@ echo -e "\n\n"
 
 tail -n 3 energy/time.txt >> energy/res.txt
 echo -e "\n\n"
-echo "ramsmp -b1 -p1 end"
+echo "end"
